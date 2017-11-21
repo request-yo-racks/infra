@@ -1,0 +1,74 @@
+[
+    {
+        "name": "bug",
+        "color": "ee0701"
+    },
+    {
+        "name": "duplicate",
+        "color": "cccccc"
+    },
+    {
+        "name": "enhancement",
+        "color": "84b6eb"
+    },
+    {
+        "name": "help wanted",
+        "color": "128A0C"
+    },
+    {
+        "name": "invalid",
+        "color": "000000"
+    },
+    {
+        "name": "pending review",
+        "color": "d4c5f9"
+    },
+    {
+        "name": "question",
+        "color": "cc317c"
+    },
+    {
+        "name": "requires changes",
+        "color": "33cccc"
+    },
+    {
+        "name": "review carefully!",
+        "color": "b60205"
+    },
+    {
+        "name": "size/L",
+        "color": "ff9933"
+    },
+    {
+        "name": "size/M",
+        "color": "FFFF00"
+    },
+    {
+        "name": "size/S",
+        "color": "CCFF66"
+    },
+    {
+        "name": "size/XL",
+        "color": "b60205"
+    },
+    {
+        "name": "size/XS",
+        "color": "00FF00"
+    },
+    {
+        "name": "WIP",
+        "color": "fbca04"
+    },
+    {
+        "name": "wontfix",
+        "color": "000000"
+    },
+    {
+        "name": "docs",
+        "color": "4000ff"
+    }
+    {
+        "name": "design",
+        "color": "8000ff"
+    }
+]
