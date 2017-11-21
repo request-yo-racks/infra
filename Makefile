@@ -5,7 +5,7 @@ SHELL = /bin/bash
 TOPDIR = $(shell git rev-parse --show-toplevel)
 
 # Request-yo-racks.
-RYR_PROJECTS = api infras processor web
+RYR_PROJECTS = api docs infra web
 
 default: setup
 
@@ -19,7 +19,7 @@ clean: ## Remove unwanted files in project (!DESTRUCTIVE!)
 	cd $(TOPDIR); git clean -ffdx && git reset --hard
 
 github-labels: setup ## Import standard labels to ALL projects
-	echo $(RYR_PROJECTS) | xargs -n 1 -I {} node_modules/.bin/glm import loannister:{} third-party/github/labels.json
+	echo $(RYR_PROJECTS) | xargs -n 1 -I {} node_modules/.bin/glm -u request-yo-racks import request-yo-racks:{} third-party/github/labels.json
 
 setup: ## Setup the full environment
 	@npm install github-label-manager
