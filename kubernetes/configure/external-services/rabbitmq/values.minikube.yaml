@@ -1,0 +1,5 @@
+image: "rabbitmq:3.6.14-management-alpine"
+rabbitmqUsername: guest
+rabbitmqPassword: guest
+persistence:
+  enabled: false

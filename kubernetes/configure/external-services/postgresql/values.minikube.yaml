@@ -1,0 +1,4 @@
+imageTag: 10.1-alpine
+postgresPassword: postgres
+persistence:
+  enabled: false
