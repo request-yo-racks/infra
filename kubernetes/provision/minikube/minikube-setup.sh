@@ -39,9 +39,6 @@ until minikube dashboard >/dev/null 2>&1; do
 done
 echo
 
-# Initialize Helm on both client and server.
-helm init
-
 # Display a message to tell to update the environment variables.
 minikube docker-env
 
