@@ -14,11 +14,13 @@ configure: ## Configure minikube and external services
 
 helm: ## Setup Helm client, server and repositories
 	@helm init
+	@helm repo add ryr https://request-yo-racks.github.io/charts/
+	@helm repo update
 
 minikube: # Setup minikube, REX ConfigMap, and ECR access.
 	@$(MAKE) -C provision/minikube minikube-start
 
-provision: minikube ## Provision the minikube cluster
+provision: minikube helm ## Provision the minikube cluster
 
 unprovision: ## Unprovision the minikube cluster
 	$(MAKE) -C provision/minikube minikube-delete

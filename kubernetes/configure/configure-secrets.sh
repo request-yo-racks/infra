@@ -1,4 +1,4 @@
 #!/bin/bash
 set -euo pipefail
 
-kubectl create secret generic ryr-api-secrets --from-file=~/.config/ryr/kubernetes-secrets
+kubectl create secret generic ryr-api-secrets --from-file="${HOME}/.config/ryr/kubernetes-secrets"
