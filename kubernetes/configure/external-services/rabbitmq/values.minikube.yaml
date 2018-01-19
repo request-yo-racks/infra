@@ -3,3 +3,4 @@ rabbitmqUsername: guest
 rabbitmqPassword: guest
 persistence:
   enabled: false
+serviceType: NodePort
