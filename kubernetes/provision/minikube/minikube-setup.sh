@@ -31,13 +31,8 @@ fi
 echo -e "${C_GREEN}Configuring minikube context...${C_RESET_ALL}"
 kubectl config use-context minikube
 
-# Start the dashboard.
-echo -e -n "${C_GREEN}The dashboard will be displayed in a new tab in the default browser...${C_RESET_ALL}"
-until minikube dashboard >/dev/null 2>&1; do
-  echo -e -n "${C_GREEN}.${C_RESET_ALL}"
-  sleep 1
-done
-echo
+# Set up Helm.
+helm init
 
 # Display a message to tell to update the environment variables.
 minikube docker-env
@@ -45,3 +40,11 @@ minikube docker-env
 # Enable addons
 minikube addons enable heapster
 minikube addons enable ingress
+
+# Start the dashboard.
+echo -e -n "${C_GREEN}The dashboard will be displayed in a new tab in the default browser...${C_RESET_ALL}"
+until minikube dashboard >/dev/null 2>&1; do
+  echo -e -n "${C_GREEN}.${C_RESET_ALL}"
+  sleep 1
+done
+echo
