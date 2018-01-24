@@ -13,7 +13,6 @@ configure: ## Configure minikube and external services
 	@cd configure/external-services && bash configure-external-services.sh
 
 helm: ## Setup Helm client, server and repositories
-	@helm init
 	@helm repo add ryr https://request-yo-racks.github.io/charts/
 	@helm repo update
 
