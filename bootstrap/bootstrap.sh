@@ -32,3 +32,6 @@ fi
 
 # Copies the contents of the public SSH key to your clipboard.
 pbcopy < "${SSH_PRIVATE_KEY}.pub"
+
+# Open the Github instruction page to add the SSH key.
+open https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
