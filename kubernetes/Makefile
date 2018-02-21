@@ -9,8 +9,8 @@ help: # Display help
 		}' $(MAKEFILE_LIST) | sort
 
 configure: ## Configure minikube and external services
-	@cd configure && bash configure-secrets.sh
-	@cd configure/external-services && bash configure-external-services.sh
+	@eval $(minikube docker-env) && cd configure && bash configure-secrets.sh
+	@eval $(minikube docker-env) && cd configure/external-services && bash configure-external-services.sh
 
 helm: ## Setup Helm client, server and repositories
 	@helm repo add ryr https://request-yo-racks.github.io/charts/
