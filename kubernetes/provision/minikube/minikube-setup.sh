@@ -32,7 +32,18 @@ echo -e "${C_GREEN}Configuring minikube context...${C_RESET_ALL}"
 kubectl config use-context minikube
 
 # Set up Helm.
-helm init
+while ! helm init --wait 2>/dev/null; do
+  echo -e "${C_RED}Helm init has not completed yes...${C_RESET_ALL}"
+  sleep 1
+done
+
+# This is a hack to ensure tiller is ready.
+echo -ne "${C_GREEN}Waiting for Tiller to start..."
+while ! helm ls 2>/dev/null; do
+  echo -ne "."
+  sleep 1
+done
+echo -e "${C_RESET_ALL}"
 
 # Display a message to tell to update the environment variables.
 minikube docker-env
