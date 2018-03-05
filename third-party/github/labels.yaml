@@ -1,0 +1,63 @@
+---
+labels:
+  # Kinds.
+  - name: kind/bug
+    color: F2A2A6
+  - name: kind/design
+    color: 8000ff
+  - name: kind/docs
+    color: 4000ff
+  - name: kind/duplicate
+    color: cccccc
+  - name: kind/enhancement
+    color: E7D3BE
+  - name: kind/feature
+    color: B6BEB7
+  - name: kind/question
+    color: EFF1D5
+
+  # T-Shirt sizes.
+  - name: size/XS
+    color: 00FF00
+  - name: size/S
+    color: CCFF66
+  - name: size/M
+    color: FFFF00
+  - name: size/L
+    color: ff9933
+  - name: size/XL
+    color: b60205
+  - name: size/XXL
+    color: 8B0000
+
+  # Experience levels.
+  - name: exp/beginner
+    color: 6A9798
+  - name: exp/intermediate
+    color: 6A9798
+  - name: exp/expert
+    color: 6A9798
+
+  # Triage statuses.
+  - name: status/accepted
+    color: CBE4CE
+  - name: status/confirmed
+    color: CBE4CE
+  - name: status/help wanted
+    color: 128A0C
+  - name: status/invalid
+    color: F09296
+  - name: status/more-info-needed
+    color: 6A9798
+  - name: status/needs-attention
+    color: 6A9798
+  - name: status/pending review
+    color: d4c5f9
+  - name: status/requires changes
+    color: 33cccc
+  - name: status/review carefully!
+    color: b60205
+  - name: status/WIP
+    color: fbca04
+  - name: status/wontfix
+    color: 000000
