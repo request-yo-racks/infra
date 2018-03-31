@@ -1,26 +1,36 @@
 #!/bin/bash
 set -euo pipefail
 
-# Install Brew.
-brew --version || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Import OSX common functions.
+source bootstrap-osx-common.sh
 
-# Install Git.
-brew update
+: ${BS_SILENT:=1}
+if [ "${BS_SILENT}" -eq "1" ]; then
+  exec &>/dev/null
+fi
+
+# Install brew if needed.
+brew_install
+
+# Update brew.
+brew_update
 
 # Install brew formulas.
 brew install \
   brew-cask-completion \
   bash-completion \
   docker-completion \
+  editorconfig \
   git \
   node \
-  pip-completion 2>/dev/null
+  pip-completion \
+  shellcheck
 
 # Install cask formulas.
 brew cask install \
   docker \
-  iterm2 \
-  virtualbox 2>/dev/null
+  virtualbox \
+  virtualbox-extension-pack
 
 # Generate an SSH key (without passphrase) if needed and add it to the ssh-agent.
 SSH_PRIVATE_KEY=~/.ssh/id_rsa

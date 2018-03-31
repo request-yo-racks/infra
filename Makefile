@@ -20,6 +20,12 @@ apply-labels:
 	# echo $(RYR_PROJECTS) | xargs -n 1 -I {} node_modules/.bin/glm -u request-yo-racks import request-yo-racks:{} third-party/github/labels.json
 	echo $(RYR_PROJECTS) | xargs -n 1 -I {} ./bin/labeler apply -r request-yo-racks/{} third-party/github/labels.yaml
 
+bootstrap-osx: ## Setup an OSX environment
+	@cd bootstrap && bash bootstrap-osx.sh
+
+bootstrap-osx-extras: ## Install OSX extra packages
+	@cd bootstrap && bash bootstrap-osx-extras.sh
+
 clean: ## Remove unwanted files in project (!DESTRUCTIVE!)
 	cd $(TOPDIR) && git clean -ffdx && git reset --hard
 
