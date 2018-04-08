@@ -1,8 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-# Import OSX common functions.
-source bootstrap-osx-common.sh
+# This script needs to be standalone to be run like this:
+# bash <(curl -fsSL https://raw.githubusercontent.com/request-yo-racks/infra/master/bootstrap/bootstrap-osx.sh)
+# Therefore cannot import other scripts.
 
 : ${BS_SILENT:=1}
 if [ "${BS_SILENT}" -eq "1" ]; then
@@ -10,10 +11,10 @@ if [ "${BS_SILENT}" -eq "1" ]; then
 fi
 
 # Install brew if needed.
-brew_install
+brew --version || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Update brew.
-brew_update
+brew update
 
 # Install brew formulas.
 brew install \
