@@ -1,0 +1,9 @@
+controller:
+  service:
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: requestyoracks.org.
+  publishService:
+    enabled: true
+
+rbac:
+  create: true
