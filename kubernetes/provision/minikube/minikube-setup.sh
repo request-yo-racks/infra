@@ -37,6 +37,14 @@ while ! helm init --wait 2>/dev/null; do
   sleep 1
 done
 
+# Workaround for Helm list issues:
+#    https://github.com/kubernetes/helm/issues/2872
+#    https://github.com/kubernetes/helm/issues/3816
+#    https://github.com/kubernetes/helm/issues/3870
+#    https://github.com/kubernetes/helm/issues/3986
+#    https://stackoverflow.com/questions/49747271
+kubectl --namespace=kube-system patch deployment/tiller-deploy --patch '{"spec": {"template": {"spec": {"automountServiceAccountToken": true}}}}'
+
 # This is a hack to ensure tiller is ready.
 echo -ne "${C_GREEN}Waiting for Tiller to start..."
 while ! helm ls 2>/dev/null; do
