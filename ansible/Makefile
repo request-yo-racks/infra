@@ -2,6 +2,8 @@
 SHELL = /bin/bash
 TOPDIR = $(shell git rev-parse --show-toplevel)
 
+CLUSTERS = minikube prod
+
 default: setup
 
 help: # Display help
@@ -10,12 +12,22 @@ help: # Display help
 			printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF \
 		}' $(MAKEFILE_LIST) | sort
 
-# preconfigure-minikube: ## Update Kubernetes minikube secrets
-# 	. venv/bin/activate \
-# 		&& ansible-playbook -i inventory/kubernetes/minikube \
-# 			--tags "preconfiguration" \
-# 			playbooks/kubernetes.yml
+clean: clean-repo  ## Clean everything (!DESTRUCTIVE!)
 
+clean-repo: ## Remove unwanted files in project (!DESTRUCTIVE!)
+	@cd $(TOPDIR) && git clean -ffdx && git reset --hard
+
+configure-$(CLUSTERS): ## Configure $(CLUSTERS)
+	. venv/bin/activate \
+		&& ansible-playbook -i inventory/$(lastword $(subst -, ,$@)) \
+			--tags "$(firstword $(subst -, ,$@))" \
+			playbooks/$(firstword $(subst -, ,$@)).yml
+
+provision-$(CLUSTERS): ## Provision $(CLUSTERS)
+	. venv/bin/activate \
+		&& ansible-playbook -i inventory/$(lastword $(subst -, ,$@)) \
+			--tags "$(firstword $(subst -, ,$@))" \
+			playbooks/$(firstword $(subst -, ,$@)).yml
 
 setup: venv ## Setup the full environment
 	. venv/bin/activate && ansible-galaxy install -r requirements.yml
