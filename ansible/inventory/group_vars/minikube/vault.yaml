@@ -1,0 +1,4 @@
+---
+# Keep the values order alphabetically.
+# No need to encrypt this file as it will only contain values for the development environment.
+# We use it for consistency accross the environments.

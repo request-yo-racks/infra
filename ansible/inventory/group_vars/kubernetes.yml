@@ -1,0 +1,7 @@
+---
+k8s_secrets: {}
+  
+k8s_configmap_common: {}
+  
+k8s_namespaces:
+  - default
