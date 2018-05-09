@@ -1,0 +1,53 @@
+---
+- name: Configure Kubernetes cluster
+  hosts: all
+  remote_user: root
+  tags:
+    - configure
+  roles:
+    - kubernetes-modules
+  tasks:
+    - name: Create namespaces
+      k8s_v1_namespace:
+        context: "{{ k8s_context }}"
+        name: "{{ item }}"
+        state: present
+      tags:
+        - namespace
+      loop: "{{ k8s_namespaces }}"
+    - name: List namespaces
+      k8s_v1_namespace_list:
+        context: "{{ k8s_context }}"
+        state: present
+      register: list_namespaces_results
+      tags:
+        - namespace
+
+    # The magic number 2 comes from the fact that kubernetes comes with 2 system namespaces.
+    - name: Ensure all namespaces are created
+      assert:
+        that:
+          - list_namespaces_results.namespace_list | length | int == (k8s_namespaces | length + 2) | int
+        msg: "{{ list_namespaces_results.namespace_list | length }} namespaces found, but {{ (k8s_namespaces | length + 2) }} expected."
+
+    - name: Configure secrets
+      k8s_v1_secret:
+        context: "{{ k8s_context }}"
+        data: "{{ k8s_secrets }}"
+        force: true
+        name: ryr-secrets
+        namespace: "{{ item }}"
+      tags:
+        - secrets
+      loop: "{{ k8s_namespaces }}"
+
+    - name: Configure configmap
+      k8s_v1_config_map:
+        context: "{{ k8s_context }}"
+        data: "{{ k8s_configmap_common | combine(k8s_configmap) }}"
+        force: true
+        name: ryr-env
+        namespace: "{{ item }}"
+      tags:
+        - configmap
+      loop: "{{ k8s_namespaces }}"

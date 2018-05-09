@@ -1,0 +1,8 @@
+---
+- name: Provision Kubernetes cluster
+  hosts: all
+  remote_user: root
+  tags:
+    - provision
+  roles:
+    - kubernetes-modules
