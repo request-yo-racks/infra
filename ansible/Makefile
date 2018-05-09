@@ -24,6 +24,6 @@ venv: venv/bin/activate ## Setup local venv
 
 venv/bin/activate: requirements.txt
 	test -d venv || python3 -m venv venv
-	. venv/bin/activate && pip install -r requirements.txt
+	. venv/bin/activate && pip install --upgrade pip setuptools && pip install -r requirements.txt
 
 PHONY: setup venv
