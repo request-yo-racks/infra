@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "--set postgresPassword=${RYR_EXT_POSTGRESQL_PASSWORD}"

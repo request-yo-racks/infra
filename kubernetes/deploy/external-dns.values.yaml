@@ -1,0 +1,16 @@
+domainFilters:
+  - requestyoracks.org
+
+google:
+  project: "request-yo-racks-1499134244211"
+
+policy: sync
+provider: google
+
+rbac:
+  create: true
+
+sources:
+  - ingress
+
+txtOwnerId: ryr
