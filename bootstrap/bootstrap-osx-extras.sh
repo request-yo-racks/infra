@@ -1,19 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
-# Import OSX common functions.
-source bootstrap-osx-common.sh
-
-: ${BS_SILENT:=1}
-if [ "${BS_SILENT}" -eq "1" ]; then
+: ${RYR_BOOTSTRAP_SILENT:=1}
+if [ "${RYR_BOOTSTRAP_SILENT}" -eq "1" ]; then
   exec &>/dev/null
 fi
 
 # Install brew if needed.
-brew_install
+brew --version || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Update brew.
-brew_update
+brew update
 
 # Install brew formulas.
 brew install \
@@ -31,4 +28,5 @@ if ! grep "[ -f ${LP_BIN} ] && . ${LP_BIN}" ~/.bash_profile; then
   echo '' >> ~/.bash_profile
   echo '# Configure LiquidPrompt.' >> ~/.bash_profile
   echo "[ -f ${LP_BIN} ] && . ${LP_BIN}" >> ~/.bash_profile
+  echo ''
 fi
