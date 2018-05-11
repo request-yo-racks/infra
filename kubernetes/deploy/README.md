@@ -33,15 +33,14 @@ link: <https://cloud.google.com/kubernetes-engine/docs/tutorials/migrating-node-
 
 ## Setting up helm
 
-### RBAC
-
-Then run:
+Install Helm with RBAC support:
 ```bash
 kubectl create -f helm-rbac-config.yaml
 helm init --service-account tiller
 ```
 
-link: <https://github.com/kubernetes/helm/blob/master/docs/rbac.md>
+Link:
+* <https://github.com/kubernetes/helm/blob/master/docs/rbac.md>
 
 ## Setup the nginx ingress controller
 
@@ -52,7 +51,8 @@ extra resources.
 helm install --name nginx-ingress stable/nginx-ingress -f nginx-controller.values.yaml
 ```
 
-* link: <https://cloud.google.com/community/tutorials/nginx-ingress-gke>
+Link:
+* <https://cloud.google.com/community/tutorials/nginx-ingress-gke>
 
 ## Setup the external DNS for GCE
 
@@ -60,7 +60,8 @@ helm install --name nginx-ingress stable/nginx-ingress -f nginx-controller.value
 helm install --name external-dns -f external-dns.values.yaml stable/external-dns
 ```
 
-* link: <https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/gke.md>
+Link:
+* <https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/gke.md>
 * [Wrong DNS entries](https://github.com/kubernetes-incubator/external-dns/issues/223)
 * [DNS troubleshooting](https://developers.google.com/speed/public-dns/docs/troubleshooting)
 
@@ -70,7 +71,7 @@ helm install --name external-dns -f external-dns.values.yaml stable/external-dns
 kubectl create -f external-dns-sample-app.yaml
 ```
 
-Wait for about 2 minutes.
+Wait for about 5 minutes.
 
 ```bash
 # Test the DNS
@@ -95,7 +96,7 @@ kubectl apply -f letsencrypt-cluster-issuer.yaml
 kubectl apply -f letsencrypt-certificate.yaml
 ```
 
-links:
+Links:
 * <https://github.com/ahmetb/gke-letsencrypt>
 * <https://cert-manager.readthedocs.io/en/latest/reference/issuers.html>
 * <https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html>
@@ -107,5 +108,6 @@ Add the following files to `~/.config/ryr/kubernetes-secrets`:
 * redis-password
 * DJANGO_SECRET_KEY
 * DJANGO_ALLOWED_HOSTS
+* DJANGO_CORS_ORIGIN_WHITELIST
 
 Follow the same steps ass the ones described in the setup guide.
