@@ -1,0 +1,28 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: requestyoracks-org-tls
+  namespace: default
+spec:
+  secretName: requestyoracks-org-tls
+  issuerRef:
+    name: ryr-prod
+    kind: ClusterIssuer
+  commonName: requestyoracks.org
+  dnsNames:
+    - api.requestyoracks.org
+    - www.requestyoracks.org
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - requestyoracks.org
+      - http01:
+          ingress: api
+        domains:
+          - api.requestyoracks.org
+      - http01:
+          ingress: web
+        domains:
+          - www.requestyoracks.org
