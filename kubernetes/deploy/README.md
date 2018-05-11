@@ -88,6 +88,18 @@ kubectl delete -f external-dns-sample-app.yaml
 
 ## HTTPS certificates with Let's Encrypt
 
+Install cert-manager:
+```bash
+helm install --name cert-manager --namespace kube-system stable/cert-manager
+kubectl apply -f letsencrypt-cluster-issuer.yaml
+```
+
+links:
+* <https://github.com/ahmetb/gke-letsencrypt>
+* <https://cert-manager.readthedocs.io/en/latest/reference/issuers.html>
+* <https://cert-manager.readthedocs.io/en/latest/reference/ingress-shim.html>
+
+
 ## Prepare the secrets
 
 Add the following files to `~/.config/ryr/kubernetes-secrets`:
