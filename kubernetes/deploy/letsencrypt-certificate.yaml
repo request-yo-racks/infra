@@ -8,12 +8,21 @@ spec:
   issuerRef:
     name: ryr-prod
     kind: ClusterIssuer
+  commonName: requestyoracks.org
   dnsNames:
-    - www.requestyoracks.org
     - api.requestyoracks.org
+    - www.requestyoracks.org
   acme:
     config:
-      - ingressClass: nginx
+      - http01:
+          ingressClass: nginx
+        domains:
+          - requestyoracks.org
+      - http01:
+          ingress: api
+        domains:
+          - api.requestyoracks.org
+      - http01:
+          ingress: web
         domains:
           - www.requestyoracks.org
-          - api.requestyoracks.org
