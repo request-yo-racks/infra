@@ -92,6 +92,7 @@ Install cert-manager:
 ```bash
 helm install --name cert-manager --namespace kube-system stable/cert-manager
 kubectl apply -f letsencrypt-cluster-issuer.yaml
+kubectl apply -f letsencrypt-certificate.yaml
 ```
 
 links:
