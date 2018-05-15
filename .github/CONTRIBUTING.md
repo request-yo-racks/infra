@@ -22,7 +22,8 @@ Create a topic branch following the these naming conventions:
 For instance, for the issue  [request-yo-racks/infra#/38](https://github.com/request-yo-racks/infra/issues/38):
 ```bash
 git pull upstream master
-git checkout -b issues/38/branch-topic
+git checkout master
+git checkout -b issues/38/bootstrap-extras
 ```
 
 Make sure you added tests to validate your changes.
