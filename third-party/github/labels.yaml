@@ -2,7 +2,7 @@
 labels:
   # Kinds.
   - name: kind/bug
-    color: F2A2A6
+    color: b60205
   - name: kind/design
     color: 8000ff
   - name: kind/docs
@@ -11,8 +11,6 @@ labels:
     color: cccccc
   - name: kind/enhancement
     color: E7D3BE
-  - name: kind/feature
-    color: B6BEB7
   - name: kind/question
     color: EFF1D5
 
@@ -32,32 +30,30 @@ labels:
 
   # Experience levels.
   - name: exp/beginner
-    color: 6A9798
+    color: CBE4CE
   - name: exp/intermediate
-    color: 6A9798
+    color: CBE4CE
   - name: exp/expert
-    color: 6A9798
+    color: CBE4CE
 
   # Triage statuses.
-  - name: status/accepted
-    color: CBE4CE
-  - name: status/confirmed
-    color: CBE4CE
+  - name: status/claimed
+    color: fbca04
   - name: status/help wanted
     color: 128A0C
   - name: status/invalid
-    color: F09296
+    color: 000000
   - name: status/more-info-needed
     color: 6A9798
-  - name: status/needs-attention
-    color: 6A9798
-  - name: status/pending review
-    color: d4c5f9
   - name: status/requires changes
     color: 33cccc
   - name: status/review carefully!
     color: b60205
-  - name: status/WIP
-    color: fbca04
   - name: status/wontfix
     color: 000000
+
+  # Environments
+  - name: environment/dev
+    color: F7FBFF
+  - name: environment/prod
+    color: F7FBFF
