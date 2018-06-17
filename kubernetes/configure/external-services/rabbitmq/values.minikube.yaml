@@ -1,6 +1,9 @@
-image: "rabbitmq:3.6.14-management-alpine"
-rabbitmqUsername: guest
-rabbitmqPassword: guest
+rabbitmq:
+  username: guest
+  password: guest
 persistence:
   enabled: false
-serviceType: NodePort
+serviceType: ClusterIP
+ingress:
+  enabled: true
+  hostName: rabbitmq.192.168.99.100.nip.io
