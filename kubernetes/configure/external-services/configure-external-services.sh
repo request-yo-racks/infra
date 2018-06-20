@@ -6,7 +6,7 @@ set -euo pipefail
 : ${HELM_EXTRA_OPTS:=""}
 
 # Configure the required services.
-SERVICES="postgresql:0.9.5 redis:3.0.1"
+SERVICES="postgresql:0.14.2 rabbitmq:1.1.6 redis:3.4.2"
 for svc in ${SERVICES}; do
 
   # Extract parts.
