@@ -5,8 +5,8 @@ set -euo pipefail
 # bash <(curl -fsSL https://raw.githubusercontent.com/request-yo-racks/infra/master/bootstrap/bootstrap-osx.sh)
 # Therefore cannot import other scripts.
 
-: ${BS_SILENT:=1}
-if [ "${BS_SILENT}" -eq "1" ]; then
+: ${RYR_BOOTSTRAP_SILENT:=1}
+if [ "${RYR_BOOTSTRAP_SILENT}" -eq "1" ]; then
   exec &>/dev/null
 fi
 
@@ -25,6 +25,7 @@ brew install \
   git \
   node \
   pip-completion \
+  python3 \
   shellcheck
 
 # Install cask formulas.
