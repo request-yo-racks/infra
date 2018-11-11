@@ -56,9 +56,9 @@ minikube docker-env
 minikube addons enable heapster
 minikube addons enable ingress
 
-# Start the dashboard.
-echo -e -n "${C_GREEN}The dashboard will be displayed in a new tab in the default browser...${C_RESET_ALL}"
-until minikube dashboard >/dev/null 2>&1; do
+# Wait for the dashboard to be ready.
+echo -e -n "${C_GREEN}Waiting for the dashboard to be ready...${C_RESET_ALL}"
+until minikube service -n kube-system kubernetes-dashboard >/dev/null 2>&1; do
   echo -e -n "${C_GREEN}.${C_RESET_ALL}"
   sleep 1
 done

@@ -20,14 +20,12 @@ Add a screenshot if applicable.
 -->
 
 
-Motivation and Context
-----------------------
-<!-- Why is this change required? What problem does it solve? -->
+<!-- Motivation and Context
+Why is this change required? What problem does it solve? -->
 
 
-How Has This Been Tested?
--------------------------
 <!--
+How Has This Been Tested?
 Add any information that could help the reviewer to validate the PR.
 Please describe in detail how you tested your changes, include details
 of your testing environment, and the tests you ran to see how your
