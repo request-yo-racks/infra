@@ -46,7 +46,7 @@ done
 echo -e "${C_RESET_ALL}"
 
 # Add/Update Helm chart repositories.
-helm repo add ryr https://charts.requestyoracks.org
+# helm repo add ryr https://charts.requestyoracks.org
 helm repo update
 
 # Display a message to tell to update the environment variables.
